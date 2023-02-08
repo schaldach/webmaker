@@ -1,4 +1,5 @@
-import { initializeApp } from "firebase/app";
+import firebase from 'firebase/compat/app'
+import 'firebase/compat/auth';
 import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
@@ -11,6 +12,10 @@ const firebaseConfig = {
   measurementId: "G-LKSCEDR4Y0"
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
+
+export default firebase
+
