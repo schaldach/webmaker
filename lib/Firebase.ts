@@ -1,5 +1,6 @@
 import firebase from 'firebase/compat/app'
 import 'firebase/compat/auth';
+import { getAuth } from 'firebase/auth'
 import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
@@ -14,7 +15,9 @@ const firebaseConfig = {
 
 
 if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig);
+  const app = firebase.initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const analytics = getAnalytics(app)
 }
 
 export default firebase
