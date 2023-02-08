@@ -1,5 +1,3 @@
-import { AuthUserProvider } from "../context/AuthUserContext";
-
 export default function RootLayout({
   children,
 }: {
@@ -12,9 +10,7 @@ export default function RootLayout({
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body>
-        <AuthUserProvider>{children}</AuthUserProvider>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
