@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState } from "react";
 import Link from "next/link";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
@@ -22,6 +24,7 @@ function SigninPage() {
 
   return (
     <div>
+      <Link href='/signin'>login</Link>
       <div>
         <input
           type="text"

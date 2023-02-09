@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState } from "react";
 import Link from "next/link";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
@@ -22,6 +24,7 @@ function SignupPage() {
 
   return (
     <div>
+      <Link href='/signup'>cadastro</Link>
       <div>
         <input
           type="text"
