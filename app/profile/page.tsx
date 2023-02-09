@@ -1,3 +1,5 @@
+'use client'
+
 import React from "react";
 import { getAuth, signOut } from "firebase/auth";
 import { auth } from "../../lib/Firebase";
