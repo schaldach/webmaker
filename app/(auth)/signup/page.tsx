@@ -1,10 +1,10 @@
-'use client'
+"use client";
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../../lib/Firebase";
 
-const auth = getAuth();
 async function Singin(email: string, password: string) {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
@@ -24,7 +24,7 @@ function SigninPage() {
 
   return (
     <div>
-      <Link href='/signin'>login</Link>
+      <Link href="/signin">login</Link>
       <div>
         <input
           type="text"

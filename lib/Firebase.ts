@@ -1,6 +1,7 @@
 import firebase from 'firebase/compat/app'
 import 'firebase/compat/auth';
 import { getAuth } from 'firebase/auth'
+import { getFirestore } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
@@ -13,12 +14,8 @@ const firebaseConfig = {
   measurementId: "G-LKSCEDR4Y0"
 };
 
+const app = firebase.initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore();
 
-if (!firebase.apps.length) {
-  const app = firebase.initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const analytics = getAnalytics(app)
-}
-
-export default firebase
-
+export { auth, db };

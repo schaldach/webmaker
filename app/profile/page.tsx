@@ -1,6 +1,7 @@
 import React from "react";
-/*import { getAuth, signOut } from "firebase/auth";
-const auth = getAuth();
+import { getAuth, signOut } from "firebase/auth";
+import { auth } from "../../lib/Firebase";
+
 function Logout() {
   signOut(auth)
     .then(() => {
@@ -9,7 +10,7 @@ function Logout() {
     .catch((error) => {
       // An error happened.
     });
-}*/
+}
 
 /*type Props = {
   user: object;
@@ -18,7 +19,7 @@ function Logout() {
 function Profile(/*{ user }: Props*/) {
   return (
     <div>
-      <button /*onClick={Logout}*/>Logout</button>
+      <button onClick={Logout}>Logout</button>
     </div>
   );
 }

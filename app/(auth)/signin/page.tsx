@@ -2,9 +2,9 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../../lib/Firebase";
 
-const auth = getAuth();
 async function Signup(email: string, password: string) {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
