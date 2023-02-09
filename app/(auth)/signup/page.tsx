@@ -2,22 +2,25 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../lib/Firebase";
+import { useRouter } from 'next/router'
 
-async function Singin(email: string, password: string) {
-  signInWithEmailAndPassword(auth, email, password)
+const router = useRouter()
+
+async function Signup(email: string, password: string, setUser:Function) {
+  createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      // Signed in
       const user = userCredential.user;
-      // ...
+      setUser(user)
+      router.push('/home')
     })
     .catch((error) => {
       console.log(error);
     });
 }
 
-function SigninPage() {
+function SignupPage({setUser}:any) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordVisible, setVisible] = useState(false);
@@ -38,11 +41,11 @@ function SigninPage() {
           placeholder="Senha"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button onClick={() => setVisible(!passwordVisible)}></button>
+        <button onClick={() => setVisible(!passwordVisible)}>mostrar senha</button>
       </div>
-      <button onClick={() => Singin(email, password)}></button>
+      <button onClick={() => Signup(email, password, setUser)}>cadastro</button>
     </div>
   );
 }
 
-export default SigninPage;
+export default SignupPage;
