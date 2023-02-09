@@ -10,14 +10,16 @@ function Logout() {
     });
 }
 
-type Props = {
-    user: object
-}
+/*type Props = {
+  user: object;
+};*/
 
-function Profile({user}:Props) {
-  return <div>
-    <button onClick={Logout}>Logout</button>
-  </div>;
+function Profile(/*{ user }: Props*/) {
+  return (
+    <div>
+      <button onClick={Logout}>Logout</button>
+    </div>
+  );
 }
 
 export default Profile;
