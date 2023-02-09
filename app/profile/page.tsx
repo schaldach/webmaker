@@ -1,4 +1,5 @@
-import { getAuth, signOut } from "firebase/auth";
+import React from "react";
+/*import { getAuth, signOut } from "firebase/auth";
 const auth = getAuth();
 function Logout() {
   signOut(auth)
@@ -8,7 +9,7 @@ function Logout() {
     .catch((error) => {
       // An error happened.
     });
-}
+}*/
 
 /*type Props = {
   user: object;
@@ -17,7 +18,7 @@ function Logout() {
 function Profile(/*{ user }: Props*/) {
   return (
     <div>
-      <button onClick={Logout}>Logout</button>
+      <button /*onClick={Logout}*/>Logout</button>
     </div>
   );
 }
