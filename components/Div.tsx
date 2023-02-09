@@ -12,7 +12,7 @@ function Div({style, childrenDiv, divId, divName, divText}:Props) {
     return (
         <div>
             {divText}
-            {childrenDiv.map(child => <Div {...child}/>)}
+            {childrenDiv.map((child, index) => <Div key={index} {...child}/>)}
         </div>
     );
 }
