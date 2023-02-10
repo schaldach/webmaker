@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   return (
     <div>
-      <div>webmaker</div>
+      <div className='text-3xl font-bold underline'>webmaker</div>
       <Link href='/signup'>criar uma conta</Link>
     </div>
   )
