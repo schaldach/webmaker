@@ -1,9 +1,4 @@
-"use client";
-
-import React, { useState } from "react";
-
 export default function RootLayout({ children }: any) {
-  const [user, setUser] = useState(null);
   return (
     <html lang="en">
       {/*
@@ -12,7 +7,7 @@ export default function RootLayout({ children }: any) {
       */}
       <head />
       <body>
-        {React.cloneElement(children, { 'user': user, 'setUser': setUser })}
+        {children}
       </body>
     </html>
   );

@@ -4,26 +4,26 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../lib/Firebase";
-import { useRouter } from 'next/router'
-
-const router = useRouter()
-
-async function Signin(email: string, password: string, setUser:Function) {
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      setUser(user)
-      router.push('/home')
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}
+import { useRouter } from 'next/navigation'
 
 function SigninPage({setUser}:any) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordVisible, setVisible] = useState(false);
+
+  const router = useRouter()
+
+  async function Signin(email: string, password: string) {
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user)
+        router.push('/home')
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
   return (
     <div>
@@ -43,7 +43,7 @@ function SigninPage({setUser}:any) {
         />
         <button onClick={() => setVisible(!passwordVisible)}>mostrar senha</button>
       </div>
-      <button onClick={() => Signin(email, password, setUser)}>login</button>
+      <button onClick={() => Signin(email, password)}>login</button>
     </div>
   );
 }

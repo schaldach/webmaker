@@ -3,22 +3,21 @@
 import React from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "../../lib/Firebase";
+import { useRouter } from "next/navigation";
 
-function Logout() {
-  signOut(auth)
-    .then(() => {
-      // Sign-out successful.
-    })
-    .catch((error) => {
-      // An error happened.
-    });
-}
+function Profile() {
+  const router = useRouter()
 
-/*type Props = {
-  user: object;
-};*/
+  function Logout() {
+    signOut(auth)
+      .then(() => {
+        router.push('/')
+      })
+      .catch((error) => {
+        console.log(error)
+      });
+  }
 
-function Profile(/*{ user }: Props*/) {
   return (
     <div>
       <button onClick={Logout}>Logout</button>
