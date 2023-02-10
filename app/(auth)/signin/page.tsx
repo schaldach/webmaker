@@ -7,8 +7,8 @@ import { auth } from "../../../lib/Firebase";
 import { useRouter } from 'next/navigation'
 
 function SigninPage({setUser}:any) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("gabimorgado0311@gmail.com");
+  const [password, setPassword] = useState("be975310");
   const [passwordVisible, setVisible] = useState(false);
 
   const router = useRouter()
@@ -32,6 +32,7 @@ function SigninPage({setUser}:any) {
         <input
           type="text"
           placeholder="Email"
+          value={email} 
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
@@ -39,6 +40,7 @@ function SigninPage({setUser}:any) {
         <input
           type={passwordVisible ? "text" : "password"}
           placeholder="Senha"
+          value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <button onClick={() => setVisible(!passwordVisible)}>mostrar senha</button>

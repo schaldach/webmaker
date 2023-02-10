@@ -20,7 +20,7 @@ function SignupPage() {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user)
-        //setDoc(doc(db, "users", user.uid), {email: user.email, avatar_url: '', uid: user.uid});
+        setDoc(doc(db, "users", user.uid), {email: user.email, avatar_url: '', uid: user.uid});
         router.push('/home')
       })
       .catch((error) => {
@@ -35,6 +35,7 @@ function SignupPage() {
         <input
           type="text"
           placeholder="Email"
+          value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
@@ -42,6 +43,7 @@ function SignupPage() {
         <input
           type={passwordVisible ? "text" : "password"}
           placeholder="Senha"
+          value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <button onClick={() => setVisible(!passwordVisible)}>mostrar senha</button>
