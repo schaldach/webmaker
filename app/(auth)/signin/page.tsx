@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../lib/Firebase";
@@ -10,8 +10,13 @@ function SigninPage({setUser}:any) {
   const [email, setEmail] = useState("gabimorgado0311@gmail.com");
   const [password, setPassword] = useState("be975310");
   const [passwordVisible, setVisible] = useState(false);
+  const [errorMessage, setError] = useState(false)
 
   const router = useRouter()
+
+  useEffect(() => {
+    setError(false)
+  }, [email, password])
 
   async function Signin(email: string, password: string) {
     signInWithEmailAndPassword(auth, email, password)
@@ -21,6 +26,7 @@ function SigninPage({setUser}:any) {
         router.push('/home')
       })
       .catch((error) => {
+        setError(true)
         console.log(error);
       });
   }
@@ -46,6 +52,7 @@ function SigninPage({setUser}:any) {
         <button onClick={() => setVisible(!passwordVisible)}>mostrar senha</button>
       </div>
       <button onClick={() => Signin(email, password)}>login</button>
+      {errorMessage?<div>Usuário e/ou senha incorretos.</div>:''}
     </div>
   );
 }

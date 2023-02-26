@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../lib/Firebase";
@@ -12,8 +12,13 @@ function SignupPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordVisible, setVisible] = useState(false);
+  const [errorMessage, setError] = useState(false)
 
   const router = useRouter();
+
+  useEffect(() => {
+    setError(false)
+  }, [email, password])
 
   async function Signup(email: string, password: string) {
     createUserWithEmailAndPassword(auth, email, password)
@@ -29,6 +34,7 @@ function SignupPage() {
       })
       .catch((error) => {
         console.log(error);
+        setError(true)
       });
   }
 
@@ -55,6 +61,7 @@ function SignupPage() {
         </button>
       </div>
       <button onClick={() => Signup(email, password)}>cadastro</button>
+      {errorMessage?<div>Esta conta já existe.</div>:''}
     </div>
   );
 }

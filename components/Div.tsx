@@ -5,6 +5,7 @@ type Props = {
     divId: number
     divName: string
     divText: string
+    divNavigation: string
     childrenDiv: Array<Props>
 }
 
